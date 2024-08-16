@@ -11,3 +11,28 @@
   font-size: 1.125rem;
   font-weight: 700;
 }
+
+.cards_container {
+  height: 100px;
+  padding: 1rem;
+}
+
+.cards_container ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  list-style: none;
+}
+
+.cards_container li {
+  cursor: pointer;
+  border: 1px solid white;
+  border-radius: .5rem;
+  width: 150px;
+  height: 150px;
+  transition: transform ease-in-out 250ms;
+  box-shadow: 2px 4px 8px white;
+}
+
+
+
