@@ -1,5 +1,13 @@
 .main {
   background-image: url(../assets/images/mobileBackground.webp);
   background-size: cover;
-  border: 1px solid black;
+}
+
+.score_board {
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.125rem;
+  font-weight: 700;
 }
