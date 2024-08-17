@@ -6,21 +6,32 @@ import pokemons from '../dataBase';
 export default function Main() {
   const [pokemonData, setPokemonData] = useState(pokemons);
   const [score, setScore] = useState(0);
+  const [highScore, setHighScore] = useState(0);
 
   function handleClick(e) {
     const selectedId = e.target.id;
-    const updatedPokemonData = pokemonData.map(pokemon => 
-      pokemon.id == selectedId ? {...pokemon, isClicked: true} : pokemon
-    )
-    setPokemonData(updatedPokemonData);
-    console.log(pokemonData);
+    const updatedPokemonList = pokemonData.map((pokemon) => {
+      if (pokemon.id == selectedId) {
+        if (pokemon.isClicked){
+          setScore(0)
+        } else {
+          const newScore = score + 1
+          setScore(newScore)
+          if (newScore >= highScore) {
+            setHighScore(newScore)
+          }
+          return {...pokemon, isClicked: true}
+        }
+      }
+      return pokemon
+    });
+    setPokemonData(updatedPokemonList)
   }
-
   return (
     <main className="main">
       <div className="score_board">
         <p className="score">Score: {score}</p>
-        <p className="high_score">High Score: 0</p>
+        <p className="high_score">High Score: {highScore}</p>
       </div>
       <div className="cards_container">
         <ul>
