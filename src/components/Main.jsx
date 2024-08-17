@@ -10,10 +10,12 @@ export default function Main() {
 
   function handleClick(e) {
     const selectedId = e.target.id;
+    let reset = false;
     const updatedPokemonList = pokemonData.map((pokemon) => {
       if (pokemon.id == selectedId) {
         if (pokemon.isClicked){
-          setScore(0)
+          setScore(0);
+          reset = true;
         } else {
           const newScore = score + 1
           setScore(newScore)
@@ -25,8 +27,13 @@ export default function Main() {
       }
       return pokemon
     });
-    setPokemonData(updatedPokemonList)
-    setPokemonData(shufflePokemons(updatedPokemonList))
+    if (reset) {
+      resetPokemonList();
+    } else {
+      setPokemonData(updatedPokemonList)
+      setPokemonData(shufflePokemons(updatedPokemonList))
+    }
+    
   }
 
   function shufflePokemons(arr) {
@@ -36,6 +43,13 @@ export default function Main() {
       [shuffledList[i], shuffledList[j]] = [shuffledList[j], shuffledList[i]]
     }
     return shuffledList;
+  }
+
+  function resetPokemonList(){
+    const resetList = pokemonData.map((pokemon) => {
+      return {...pokemon, isClicked: false}
+    })
+    setPokemonData(resetList)
   }
   return (
     <main className="main">
