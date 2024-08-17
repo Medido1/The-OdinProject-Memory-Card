@@ -26,6 +26,16 @@ export default function Main() {
       return pokemon
     });
     setPokemonData(updatedPokemonList)
+    setPokemonData(shufflePokemons(updatedPokemonList))
+  }
+
+  function shufflePokemons(arr) {
+    const shuffledList = arr.slice();
+    for (let i = shuffledList.length -1 ; i > 0; i--){
+      const j = Math.floor(Math.random() * (i + 1));/* pick a random number from 0 to i */
+      [shuffledList[i], shuffledList[j]] = [shuffledList[j], shuffledList[i]]
+    }
+    return shuffledList;
   }
   return (
     <main className="main">
