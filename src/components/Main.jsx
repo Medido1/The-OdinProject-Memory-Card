@@ -7,6 +7,7 @@ export default function Main() {
   const [pokemonData, setPokemonData] = useState(pokemons);
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
+  const [gameWon, setIsGameWon] = useState(false);
 
   function handleClick(e) {
     const selectedId = e.target.id;
@@ -18,6 +19,9 @@ export default function Main() {
           reset = true;
         } else {
           const newScore = score + 1
+          if (newScore == 6) {
+            setIsGameWon(true);
+          }
           setScore(newScore)
           if (newScore >= highScore) {
             setHighScore(newScore)
@@ -33,7 +37,6 @@ export default function Main() {
       setPokemonData(updatedPokemonList)
       setPokemonData(shufflePokemons(updatedPokemonList))
     }
-    
   }
 
   function shufflePokemons(arr) {
@@ -51,6 +54,13 @@ export default function Main() {
     })
     setPokemonData(resetList)
   }
+
+  function restartGame(){
+    resetPokemonList();
+    setScore(0);
+    setIsGameWon(false);
+  }
+
   return (
     <main className="main">
       <div className="score_board">
@@ -72,6 +82,12 @@ export default function Main() {
           ))}
         </ul>
       </div>
+      {gameWon && 
+        <div className='game_over'>
+          <h2>You won!!</h2>
+          <button className='restart_btn' onClick={restartGame}>Play again</button>
+        </div>
+      }
     </main>
   )
 }
