@@ -1,4 +1,4 @@
-import {useState } from 'react';
+import {useEffect, useState } from 'react';
 import '../styles/Main.css';
 import Card from './Card';
 import pokemons from '../dataBase';
@@ -8,6 +8,17 @@ export default function Main() {
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
   const [gameWon, setIsGameWon] = useState(false);
+
+  useEffect(() => {
+    const savedHighScore = localStorage.getItem("highScore")
+    if (savedHighScore) {
+      setHighScore(parseInt(savedHighScore), 10)
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem("highScore", highScore)
+  }, [highScore])
 
   function handleClick(e) {
     const selectedId = e.target.id;
