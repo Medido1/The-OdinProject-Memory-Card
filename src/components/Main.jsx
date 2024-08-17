@@ -19,7 +19,7 @@ export default function Main() {
           reset = true;
         } else {
           const newScore = score + 1
-          if (newScore == 6) {
+          if (newScore == pokemonData.length) {
             setIsGameWon(true);
           }
           setScore(newScore)
