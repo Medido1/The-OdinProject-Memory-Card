@@ -21,6 +21,7 @@ export default function Main() {
   }, [highScore])
 
   function handleClick(e) {
+    if (gameWon) return ;
     const selectedId = e.target.id;
     let reset = false;
     const updatedPokemonList = pokemonData.map((pokemon) => {
