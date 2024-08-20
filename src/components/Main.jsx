@@ -20,6 +20,7 @@ export default function Main() {
         <Game 
         pokemonData={pokemonData}
         setPokemonData={setPokemonData}
+        difficulty = {difficulty}
       />
       }
       

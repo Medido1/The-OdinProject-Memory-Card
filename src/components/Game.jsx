@@ -2,11 +2,19 @@ import {useState, useEffect} from "react";
 import Card from "./Card"
 
 export default function Game({
-    pokemonData, setPokemonData
+    pokemonData, setPokemonData, difficulty
 }) {
   const [gameWon, setIsGameWon] = useState(false);
   const [score, setScore] = useState(0);
-  const [highScore, setHighScore] = useState(0);
+  const [easyHighScore, setEasyHighScore] = useState(0);
+  const [normalHighScore, setNormalHighScore] = useState(0);
+  const [hardHighScore, setHardHighScore] = useState(0);
+
+  const highScore = difficulty === "Easy" 
+  ? easyHighScore 
+  : difficulty === "Normal"
+  ? normalHighScore
+  : hardHighScore
 
   function resetPokemonList(){
     const resetList = pokemonData.map((pokemon) => {
@@ -16,15 +24,34 @@ export default function Game({
   }
 
   useEffect(() => {
-    const savedHighScore = localStorage.getItem("highScore")
-    if (savedHighScore) {
-      setHighScore(parseInt(savedHighScore), 10)
-    }
-  }, [])
+    localStorage.setItem("easyHighScore", easyHighScore);
+  }, [easyHighScore]);
+  
+  useEffect(() => {
+    localStorage.setItem("normalHighScore", normalHighScore);
+  }, [normalHighScore]);
+  
+  useEffect(() => {
+    localStorage.setItem("hardHighScore", hardHighScore);
+  }, [hardHighScore]);
 
   useEffect(() => {
-    localStorage.setItem("highScore", highScore)
-  }, [highScore])
+    const savedEasyHighScore = localStorage.getItem("easyHighScore");
+    const savedNormalHighScore = localStorage.getItem("normalHighScore");
+    const savedHardHighScore = localStorage.getItem("hardHighScore");
+  
+    if (savedEasyHighScore) {
+      setEasyHighScore(parseInt(savedEasyHighScore, 10));
+    }
+    if (savedNormalHighScore) {
+      setNormalHighScore(parseInt(savedNormalHighScore, 10));
+    }
+    if (savedHardHighScore) {
+      setHardHighScore(parseInt(savedHardHighScore, 10));
+    }
+  }, []);
+  
+  
 
   function shufflePokemons(arr) {
     const shuffledList = arr.slice();
@@ -52,7 +79,13 @@ export default function Game({
           }
           setScore(newScore)
           if (newScore >= highScore) {
-            setHighScore(newScore)
+            if (difficulty === "Easy"){
+              setEasyHighScore(newScore)
+            } else if (difficulty === "Normal"){
+              setNormalHighScore(newScore)
+            } else if (difficulty === "Hard"){
+              setHardHighScore(newScore)
+            }
           }
           return {...pokemon, isClicked: true}
         }
