@@ -1,5 +1,5 @@
 import '../styles/StartWindow.css'
-import {easyPokemons, normalPokemon} from '../dataBase';
+import {easyPokemons, normalPokemon, hardPokemon} from '../dataBase';
 import icon from '../assets/images/pikachu.webp'
 
 export default function StartWindow({setDifficulty, setIsPlaying, setPokemonData}) {
@@ -14,6 +14,9 @@ export default function StartWindow({setDifficulty, setIsPlaying, setPokemonData
         } else if (difficulty === "Normal") {
             setPokemonData(normalPokemon)
             rootElement.style.height = "150vh";
+        } else if (difficulty === "Hard") {
+            setPokemonData(hardPokemon)
+            rootElement.style.height = "180vh"
         }
         setIsPlaying(true)
     }
@@ -30,6 +33,9 @@ export default function StartWindow({setDifficulty, setIsPlaying, setPokemonData
                 </li>
                 <li>
                     <button className='btn' onClick={chooseDifficulty}>Normal</button>
+                </li>
+                <li>
+                    <button className='btn' onClick={chooseDifficulty}>Hard</button>
                 </li>
             </ul>
         </div>

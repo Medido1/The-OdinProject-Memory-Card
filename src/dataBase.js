@@ -6,6 +6,8 @@ import Weedle from './assets/images/Weedle.webp';
 import Pidgey from './assets/images/Pidgey.webp';
 import Butterfree from './assets/images/Butterfree.webp';
 import Beedrill from './assets/images/Beedrill.webp';
+import Venusaur from './assets/images/Venusaur.webp';
+import Charizard from './assets/images/Charizard.webp';
 
 const easyPokemons = [
   {
@@ -62,4 +64,20 @@ const normalPokemon = [
   }
 ]
 
-export {easyPokemons, normalPokemon};
+const hardPokemon = [
+  ...normalPokemon,
+  {
+    id: "9",
+    name: "Venusaur",
+    url: Venusaur,
+    isClicked: false,
+  },
+  {
+    id: "10",
+    name: "Charizard",
+    url: Charizard,
+    isClicked: false,
+  }
+]
+
+export {easyPokemons, normalPokemon, hardPokemon};
