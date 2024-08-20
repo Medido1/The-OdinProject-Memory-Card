@@ -6,14 +6,20 @@ import pokemons from '../dataBase';
 
 export default function Main() {
   const [pokemonData, setPokemonData] = useState(pokemons);
+  const [difficulty, setDifficulty] = useState("");
+  const [isPlaying, setIsPlaying] = useState(false);
   
   return (
     <main className="main">
-      <StartWindow />
-      <Game 
-       pokemonData={pokemonData}
-       setPokemonData={setPokemonData}
+      {!isPlaying && 
+        <StartWindow setDifficulty={setDifficulty} setIsPlaying={setIsPlaying}/>
+      }
+      {difficulty == "Easy" && 
+        <Game 
+        pokemonData={pokemonData}
+        setPokemonData={setPokemonData}
       />
+      }
       
     </main>
   )
