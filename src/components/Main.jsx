@@ -1,4 +1,5 @@
 import {useEffect, useState } from 'react';
+import StartWindow from './StartWindow';
 import '../styles/Main.css';
 import Card from './Card';
 import pokemons from '../dataBase';
@@ -75,6 +76,7 @@ export default function Main() {
 
   return (
     <main className="main">
+      <StartWindow />
       <div className="score_board">
         <p className="score">Score: {score}</p>
         <p className="high_score">High Score: {highScore}</p>

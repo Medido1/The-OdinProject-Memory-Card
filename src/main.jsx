@@ -4,9 +4,10 @@ import './index.css'
 import Header from './components/Header'
 import Main from './components/Main'
 
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Header />
     <Main />
-  </StrictMode>,
+  </StrictMode>
 )

@@ -1,0 +1,33 @@
+.start_window {
+    padding: 1rem;
+    background: linear-gradient(45deg, #fca5a5, #ef4444);
+    width: 90vw;
+    height: 100px;
+    border-radius: 1rem;
+    color: #fff;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.start_window ul {
+    list-style: none;
+}
+
+.btn {
+    padding: .5rem 1rem;
+    border-radius: .5rem;
+    background-color: #1e293b;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+}
