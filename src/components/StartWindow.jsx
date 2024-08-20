@@ -3,14 +3,17 @@ import {easyPokemons, normalPokemon} from '../dataBase';
 import icon from '../assets/images/pikachu.webp'
 
 export default function StartWindow({setDifficulty, setIsPlaying, setPokemonData}) {
+    const rootElement = document.getElementById('root');
 
     function chooseDifficulty(e){
         let difficulty = e.target.textContent;
         setDifficulty(difficulty)
         if (difficulty === "Easy") {
             setPokemonData(easyPokemons)
+            rootElement.style.height = "125vh";
         } else if (difficulty === "Normal") {
             setPokemonData(normalPokemon)
+            rootElement.style.height = "150vh";
         }
         setIsPlaying(true)
     }

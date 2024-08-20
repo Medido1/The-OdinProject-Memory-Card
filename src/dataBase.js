@@ -4,6 +4,8 @@ import Squirtle from './assets/images/Squirtle.webp';
 import Caterpie from './assets/images/Caterpie.webp';
 import Weedle from './assets/images/Weedle.webp';
 import Pidgey from './assets/images/Pidgey.webp';
+import Butterfree from './assets/images/Butterfree.webp';
+import Beedrill from './assets/images/Beedrill.webp';
 
 const easyPokemons = [
   {
@@ -47,7 +49,16 @@ const easyPokemons = [
 const normalPokemon = [
   ...easyPokemons,
   {
-    
+    id: "7",
+    name : "Butterfree",
+    url: Butterfree,
+    isClicked: false,
+  },
+  {
+    id: "8",
+    name: "Beedrill",
+    url: Beedrill,
+    isClicked: false
   }
 ]
 
