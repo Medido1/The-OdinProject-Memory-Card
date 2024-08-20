@@ -20,12 +20,34 @@ html, body {
   height: 100vh; 
 }
 
-.header {
+.header,
+.rules_container {
   background: linear-gradient(45deg, #ef4444, #fca5a5);
-  color: #FFFFFF;
   padding: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.header {
+  color: #FFFFFF;
+}
+
+.rules_container {
+  height: 60px;
+  border-radius: .5rem;
+}
+
+.icon.rules {
+  cursor: pointer;
+  margin-left: 1rem;
+}
+
+@media (min-width: 768px) {
+  .rules_container {
+    width: 50vw;
+    margin-left: 1rem;
+  }
+
 }

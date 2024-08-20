@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import StartWindow from './StartWindow';
 import Game from './Game';
+import Rules from './Rules';
 import '../styles/Main.css';
 
 
@@ -22,6 +23,9 @@ export default function Main() {
         setPokemonData={setPokemonData}
         difficulty = {difficulty}
       />
+      }
+      { isPlaying &&
+        <Rules />
       }
     </main>
   )
