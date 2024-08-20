@@ -24,22 +24,10 @@ export default function Game({
   }
 
   useEffect(() => {
-    localStorage.setItem("easyHighScore", easyHighScore);
-  }, [easyHighScore]);
-  
-  useEffect(() => {
-    localStorage.setItem("normalHighScore", normalHighScore);
-  }, [normalHighScore]);
-  
-  useEffect(() => {
-    localStorage.setItem("hardHighScore", hardHighScore);
-  }, [hardHighScore]);
-
-  useEffect(() => {
     const savedEasyHighScore = localStorage.getItem("easyHighScore");
     const savedNormalHighScore = localStorage.getItem("normalHighScore");
     const savedHardHighScore = localStorage.getItem("hardHighScore");
-  
+
     if (savedEasyHighScore) {
       setEasyHighScore(parseInt(savedEasyHighScore, 10));
     }
@@ -50,9 +38,17 @@ export default function Game({
       setHardHighScore(parseInt(savedHardHighScore, 10));
     }
   }, []);
-  
-  
 
+  useEffect(() => {
+    if (difficulty === "Easy") {
+      localStorage.setItem("easyHighScore", easyHighScore);
+    } else if (difficulty === "Normal") {
+      localStorage.setItem("normalHighScore", normalHighScore);
+    } else if (difficulty === "Hard") {
+      localStorage.setItem("hardHighScore", hardHighScore);
+    }
+  }, [easyHighScore, normalHighScore, hardHighScore, difficulty]);
+ 
   function shufflePokemons(arr) {
     const shuffledList = arr.slice();
     for (let i = shuffledList.length -1 ; i > 0; i--){
@@ -61,7 +57,6 @@ export default function Game({
     }
     return shuffledList;
   }
-
 
   function handleClick(e) {
     if (gameWon) return ;
