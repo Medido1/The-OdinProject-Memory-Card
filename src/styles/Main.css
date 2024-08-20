@@ -1,6 +1,6 @@
 .main {
   background-image: url(../assets/images/mobileBackground.webp);
-  background-size: cover;
+  background-size:cover;
   width: 100%;
 }
 
@@ -13,16 +13,11 @@
   font-weight: 700;
 }
 
-.cards_container {
-  height: 100px;
-  padding: 1rem;
-}
-
 .cards_container ul {
   display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: 1rem;
   list-style: none;
+  padding: 1rem;
 }
 
 .cards_container li {
@@ -63,6 +58,29 @@
   cursor: pointer;
   font-weight: 700;
   font-size: 1.125rem;
+}
+
+@media (min-width: 768px) {
+  .main {
+    background: url(../assets/images/desktopBackGround.webp) no-repeat;
+    background-size: cover;
+  }
+  .cards_container ul {
+    grid-template-columns: repeat(6, .25fr);
+  }
+  .cards_container li {
+    transition: transform ease-in-out 250ms;
+    transition: background-color ease-in-out 250ms;
+  }
+  .cards_container li:hover {
+    transform: scale(1.1);
+  }
+  .cards_container li:active {
+    background-color: #fee2e2;
+  }
+  .game_over {
+    width: 45vw;
+  }
 }
 
 

@@ -44,3 +44,9 @@
     font-weight: 700;
     cursor: pointer;
 }
+
+@media (min-width: 768px) {
+    .start_window {
+        width: 45vw;
+    }
+}
