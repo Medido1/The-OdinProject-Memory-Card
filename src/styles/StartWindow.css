@@ -18,8 +18,21 @@
     transform: translate(-50%, -50%);
 }
 
+.start_window div {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.icon {
+    width: 25px;
+    height: auto;
+}
+
 .start_window ul {
     list-style: none;
+    display: flex;
+    gap: 1rem;
 }
 
 .btn {

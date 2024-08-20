@@ -5,7 +5,7 @@ import Caterpie from './assets/images/Caterpie.webp';
 import Weedle from './assets/images/Weedle.webp';
 import Pidgey from './assets/images/Pidgey.webp';
 
-const pokemons = [
+const easyPokemons = [
   {
     id: "1",
     name : "bulbasaur",
@@ -44,4 +44,11 @@ const pokemons = [
   }
 ]
 
-export default pokemons;
+const normalPokemon = [
+  ...easyPokemons,
+  {
+    
+  }
+]
+
+export {easyPokemons, normalPokemon};
